@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute Les Vieilles Canailles - Le Groupe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f0f0f;
+            color: #e5e5e5;
+        }
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #0f0f0f);
+        }
+        .text-gold {
+            color: #d4af37;
+        }
+        .bg-gold {
+            background-color: #d4af37;
+        }
+        .border-gold {
+            border-color: #d4af37;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* FILIGRANE LOGO */
+        .logo-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.08;
+            overflow: hidden;
+        }
+        .logo-watermark img {
+            width: 100%;
+            max-width: 900px;
+            filter: brightness(1.2) contrast(1.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* VIDEO RESPONSIVE */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* LIGHTBOX MODAL */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease-in;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: #d4af37;
+            color: black;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* GALLERY IMAGES CLICKABLE */
+        .gallery-image {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            opacity: 0.8;
+        }
+
+        /* FORM STYLES */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+
+        /* BOUTON FACEBOOK FLOTTANT */
+        .floating-facebook {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: linear-gradient(135deg, #1877f2 0%, #0c63d4 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-facebook:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(24, 119, 242, 0.6);
+            background: linear-gradient(135deg, #0c63d4 0%, #1877f2 100%);
+        }
+
+        .floating-facebook .icon-wrapper {
+            background: white;
+            color: #1877f2;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .floating-facebook .text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .floating-facebook .text-main {
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .floating-facebook .text-sub {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: normal;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 35px rgba(24, 119, 242, 0.7);
+            }
+        }
+
+        /* ========== NOUVELLES ANIMATIONS ========== */
+
+        /* 1. SCROLL ANIMATIONS */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-animate-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-animate-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-animate-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-animate-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* 2. HOVER EFFECTS AMÉLIORÉS */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-glow:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .card-3d {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card-3d:hover {
+            transform: perspective(1000px) rotateY(5deg) translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Effet brillance sur les images */
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.8s;
+        }
+
+        .shine-effect:hover::after {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        /* 3. CANVAS POUR PARTICULES */
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Animation du logo au chargement */
+        @keyframes logoEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .logo-entrance {
+            animation: logoEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Effet glow doré */
+        .glow-gold {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.9));
+            }
+        }
+
+        /* Responsive mobile */
+        @media (max-width: 768px) {
+            .floating-facebook {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .floating-facebook .icon-wrapper {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .floating-facebook .text-main {
+                font-size: 14px;
+            }
+            
+            .floating-facebook .text-sub {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-facebook {
+                padding: 10px 14px;
+                gap: 8px;
+            }
+            
+            .floating-facebook .text-sub {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-close" onclick="closeLightbox()">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 font-display text-2xl font-bold tracking-wider text-white">
+                    TLVC <span class="text-gold">OFFICIEL</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#accueil" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Accueil</a>
+                        <a href="#le-groupe" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Le Groupe</a>
+                        <a href="#repertoire" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Répertoire</a>
+                        <a href="#videos" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Vidéos</a>
+                        <a href="#galerie" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Galerie</a>
+                        <a href="#presse" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Presse</a>
+                        <a href="#amities" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Amitiés</a>
+                        <a href="#contact" class="bg-gold text-black hover:bg-yellow-500 px-4 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 btn-glow">Réserver</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-black border-b border-gray-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#accueil" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="#le-groupe" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Le Groupe</a>
+                <a href="#repertoire" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Répertoire</a>
+                <a href="#videos" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Vidéos</a>
+                <a href="#galerie" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Galerie</a>
+                <a href="#presse" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Presse</a>
+                <a href="#amities" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Amitiés</a>
+                <a href="#contact" class="text-gold font-bold block px-3 py-2 rounded-md text-base font-medium">Réserver</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section avec Particules -->
+<section id="accueil" class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="hero.webp" alt="Tribute Les Vieilles Canailles Concert Live" class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 hero-gradient"></div>
+    </div>
+
+    <!-- CANVAS PARTICULES DORÉES -->
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto hero-content">
+        <!-- 1. LOGO TLVC CENTRÉ (LE PLUS HAUT) -->
+        <img src="logo-tlvc.jpg" alt="Logo TLVC" class="mx-auto h-56 md:h-80 lg:h-96 mb-10 drop-shadow-2xl logo-entrance glow-gold">
+        
+        <!-- 2. BADGE TRIBUTE (JUSTE EN DESSOUS DU LOGO) -->
+        <div class="inline-block border border-gold text-gold px-4 py-1 rounded-full text-sm font-semibold tracking-widest mb-6 uppercase bg-black/40 backdrop-blur-sm scroll-animate">
+            TRIBUTE
+        </div>
+        
+        <!-- 3. TITRE PRINCIPAL -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight drop-shadow-2xl scroll-animate">
+            L'ESPRIT DES <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">LÉGENDES</span>
+        </h1>
+        
+        <!-- 4. SOUS-TITRE -->
+        <p class="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-gray-300 font-light mb-10 scroll-animate">
+            Retrouvez la magie de <strong class="text-white">Johnny, Eddy et Jacques</strong>. 
+            <br>6 musiciens, 3 heures de live, 100% Rock'n'Roll.
+        </p>
+        
+        <!-- 5. BOUTONS D'ACTION -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center scroll-animate">
+            <a href="#contact" class="bg-gold text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 transition-all transform hover:scale-105 shadow-lg shadow-yellow-900/20 flex items-center justify-center gap-2 btn-glow">
+                <i data-lucide="calendar-check"></i> Demander un devis
+            </a>
+            <a href="#le-groupe" class="border border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 backdrop-blur-sm bg-white/5 btn-glow">
+                <i data-lucide="music"></i> Découvrir le groupe
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Presentation / Stats -->
+    <section class="py-12 bg-zinc-900 border-b border-zinc-800 scroll-animate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-zinc-700">
+                <div class="p-4">
+                    <span class="block text-4xl md:text-5xl font-display font-bold text-gold mb-2">100%</span>
+                    <span class="text-sm md:text-base text-gray-400 uppercase tracking-widest">Live Music</span>
+                </div>
+                <div class="p-4">
+                    <span class="block text-4xl md:text-5xl font-display font-bold text-gold mb-2">3H</span>
+                    <span class="text-sm md:text-base text-gray-400 uppercase tracking-widest">De Spectacle</span>
+                </div>
+                <div class="p-4">
+                    <span class="block text-4xl md:text-5xl font-display font-bold text-gold mb-2">6</span>
+                    <span class="text-sm md:text-base text-gray-400 uppercase tracking-widest">Musiciens Pro</span>
+                </div>
+                <div class="p-4">
+                    <span class="block text-4xl md:text-5xl font-display font-bold text-gold mb-2">∞</span>
+                    <span class="text-sm md:text-base text-gray-400 uppercase tracking-widest">Souvenirs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="a-propos" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0 relative scroll-animate-left">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-gold"></div>
+                    <img src="about.webp" alt="Guitariste TLVC" class="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 w-full object-cover shine-effect">
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-gold"></div>
+                </div>
+                <div class="scroll-animate-right">
+                    <h2 class="text-gold font-display text-lg tracking-widest uppercase mb-2">L'Expérience</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Plus qu'un concert, une célébration.</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        Revivez sur scène l'esprit rock des <strong>Vieilles Canailles</strong>. Notre tribute band réunit six musiciens passionnés pour rendre hommage au trio mythique de la chanson française : Hallyday, Mitchell, Dutronc.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        La formule parfaite pour une soirée dansante, festive et nostalgique. Des standards des années 60 à aujourd'hui, nous vous proposons une immersion totale, sans imitation caricaturale, mais avec une fidélité musicale absolue et une énergie communicative.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <i data-lucide="check-circle" class="text-gold w-6 h-6 mr-3"></i>
+                            Adapté aux festivals, mairies et soirées privées
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i data-lucide="check-circle" class="text-gold w-6 h-6 mr-3"></i>
+                            Sonorisation et lumières professionnelles
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i data-lucide="check-circle" class="text-gold w-6 h-6 mr-3"></i>
+                            Interaction garantie avec le public
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Band Section -->
+    <section id="le-groupe" class="py-20 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">LES MUSICIENS</h2>
+                <div class="w-24 h-1 bg-gold mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Une équipe soudée de professionnels au service du Rock'n'Roll.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Member 1 -->
+                <div class="bg-black rounded-xl overflow-hidden shadow-lg card-3d transition-all duration-300 group scroll-animate">
+                    <div class="h-80 overflow-hidden relative shine-effect">
+                        <img src="mario.webp" alt="Chant" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent h-24"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-display font-bold text-white mb-1">MARIO</h3>
+                        <p class="text-gold font-medium uppercase text-sm tracking-wider">Chant & Basse</p>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="bg-black rounded-xl overflow-hidden shadow-lg card-3d transition-all duration-300 group scroll-animate">
+                    <div class="h-80 overflow-hidden relative shine-effect">
+                        <img src="jean-baptiste.webp" alt="Guitare Chant" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent h-24"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-display font-bold text-white mb-1">JEAN-BAPTISTE</h3>
+                        <p class="text-gold font-medium uppercase text-sm tracking-wider">Guitare & Chant</p>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="bg-black rounded-xl overflow-hidden shadow-lg card-3d transition-all duration-300 group scroll-animate">
+                    <div class="h-80 overflow-hidden relative shine-effect">
+                        <img src="daniel.webp" alt="Saxophone" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent h-24"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-display font-bold text-white mb-1">DANIEL</h3>
+                        <p class="text-gold font-medium uppercase text-sm tracking-wider">Saxophone & Harmonica</p>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="bg-black rounded-xl overflow-hidden shadow-lg card-3d transition-all duration-300 group scroll-animate">
+                    <div class="h-80 overflow-hidden relative shine-effect">
+                        <img src="herve.webp" alt="Batterie" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent h-24"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-display font-bold text-white mb-1">HERVÉ</h3>
+                        <p class="text-gold font-medium uppercase text-sm tracking-wider">Batterie & Chant</p>
+                    </div>
+                </div>
+
+                <!-- Member 5 -->
+                <div class="bg-black rounded-xl overflow-hidden shadow-lg card-3d transition-all duration-300 group scroll-animate">
+                    <div class="h-80 overflow-hidden relative shine-effect">
+                        <img src="marc.webp" alt="Claviers" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent h-24"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-display font-bold text-white mb-1">MARC</h3>
+                        <p class="text-gold font-medium uppercase text-sm tracking-wider">Claviers</p>
+                    </div>
+                </div>
+
+                <!-- Member 6 -->
+                <div class="bg-black rounded-xl overflow-hidden shadow-lg card-3d transition-all duration-300 group scroll-animate">
+                    <div class="h-80 overflow-hidden relative shine-effect">
+                        <img src="gilles.webp" alt="Guitare" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent h-24"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-display font-bold text-white mb-1">GILLES</h3>
+                        <p class="text-gold font-medium uppercase text-sm tracking-wider">Guitares</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION VIDÉOS YouTube -->
+    <section id="videos" class="py-20 bg-black relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">VIDÉOS</h2>
+                <div class="w-24 h-1 bg-gold mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Revivez nos meilleurs moments sur scène. 100% Live Rock'n'Roll !</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Video 1 -->
+                <div class="group scroll-animate-left">
+                    <div class="mb-4">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/6yxA89V3cbw?si=DQy_27vFeRGJkYV6" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-2">Concert Live - Moment 1</h3>
+                    <p class="text-gray-400">Une performance énergique du groupe. L'énergie rock à son paroxysme !</p>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="group scroll-animate-right">
+                    <div class="mb-4">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/ITO9RANyDfI?si=MFJvszO57kFICMN9" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-2">Concert Live - Moment 2</h3>
+                    <p class="text-gray-400">L'interaction avec le public, la passion, la musique qui embrase la scène !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION GALERIE PHOTOS -->
+    <section id="galerie" class="py-20 bg-zinc-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">GALERIE PHOTOS</h2>
+                <div class="w-24 h-1 bg-gold mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Cliquez sur une photo pour l'agrandir. Les meilleurs moments du groupe en images.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Photo 1 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('Daniel.jpg')">
+                    <img src="Daniel.jpg" alt="Daniel - TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('Mario-live.jpg')">
+                    <img src="Mario-live.jpg" alt="Mario - TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('Guitarist.jpg')">
+                    <img src="Guitarist.jpg" alt="Guitariste - TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('Herve.jpg')">
+                    <img src="Herve.jpg" alt="Hervé - TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Repertoire Section -->
+    <section id="repertoire" class="py-20 bg-black relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:flex lg:items-start lg:space-x-12">
+                <div class="lg:w-1/3 mb-12 lg:mb-0 scroll-animate-left">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">LA SETLIST <br><span class="text-gold">MYTHIQUE</span></h2>
+                    <p class="text-gray-400 text-lg mb-8">
+                        Nous traversons les époques avec les plus grands standards. Une setlist énergique qui fait chanter et danser toutes les générations.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-white border-b border-gold pb-1 hover:text-gold transition-colors">
+                        Télécharger le dossier de presse <i data-lucide="download" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-animate-right">
+                    <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
+                        <h4 class="text-xl font-bold text-white mb-2">Les Incontournables</h4>
+                        <p class="text-gray-400 italic">"Noir c'est noir", "Pas de boogie woogie", "Et moi, et moi, et moi", "Lèche-bottes blues"...</p>
+                    </div>
+                    <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
+                        <h4 class="text-xl font-bold text-white mb-2">L'Énergie Rock</h4>
+                        <p class="text-gray-400 italic">"Gabrielle", "Les Cactus", "La musique que j'aime", "Allumer le feu"...</p>
+                    </div>
+                    <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
+                        <h4 class="text-xl font-bold text-white mb-2">Les Ballades</h4>
+                        <p class="text-gray-400 italic">"Quelque chose de Tennessee", "Sur la route de Memphis", "Le cimetière des éléphants"...</p>
+                    </div>
+                    <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
+                        <h4 class="text-xl font-bold text-white mb-2">Et bien plus...</h4>
+                        <p class="text-gray-400 italic">Plus de 3h de répertoire modulable selon votre événement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-white">ILS NOUS ONT FAIT CONFIANCE</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-black p-8 rounded-xl shadow-lg relative hover:transform hover:scale-105 transition-all scroll-animate">
+                    <i data-lucide="quote" class="text-zinc-800 w-12 h-12 absolute top-6 right-6"></i>
+                    <div class="flex text-gold mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Comme je dis très souvent... ça donne la chair de poule tellement c'est beau, tellement c'est bien. Grand merci aux Vieilles Canailles !!!"</p>
+                    <p class="text-white font-bold text-sm">- Fan, Juillet 2024</p>
+                </div>
+
+                <div class="bg-black p-8 rounded-xl shadow-lg relative mt-0 md:-mt-4 border border-gold/30 hover:transform hover:scale-105 transition-all scroll-animate">
+                    <i data-lucide="quote" class="text-zinc-800 w-12 h-12 absolute top-6 right-6"></i>
+                    <div class="flex text-gold mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Un concert de oufffff, un groupe qui joue à la perfection avec ses tripes ! Bravo !"</p>
+                    <p class="text-white font-bold text-sm">- Organisateur, Mai 2023</p>
+                </div>
+
+                <div class="bg-black p-8 rounded-xl shadow-lg relative hover:transform hover:scale-105 transition-all scroll-animate">
+                    <i data-lucide="quote" class="text-zinc-800 w-12 h-12 absolute top-6 right-6"></i>
+                    <div class="flex text-gold mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Ils ont mis le feu ! Merci pour cette magnifique fête de la musique qui fut encore une fois une très belle réussite."</p>
+                    <p class="text-white font-bold text-sm">- Mairie, Juin 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION : PRESSE ET MÉDIAS ========== -->
+    <section id="presse" class="py-20 bg-black relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">PRESSE & MÉDIAS</h2>
+                <div class="w-24 h-1 bg-gold mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Ils parlent de nous ! Articles de presse, interviews et couverture médiatique.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Photo Presse 1 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 gallery-image shine-effect scroll-animate" onclick="openLightbox('presse-1.jpg')">
+                    <img src="presse-1.jpg" alt="Article de presse TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold">Article Journal Local</p>
+                    </div>
+                </div>
+
+                <!-- Photo Presse 2 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 gallery-image shine-effect scroll-animate" onclick="openLightbox('presse-2.jpg')">
+                    <img src="presse-2.jpg" alt="Interview TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold">Interview Magazine</p>
+                    </div>
+                </div>
+
+                <!-- Photo Presse 3 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 gallery-image shine-effect scroll-animate" onclick="openLightbox('presse-3.jpg')">
+                    <img src="presse-3.jpg" alt="Couverture médiatique TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold">Radio Locale</p>
+                    </div>
+                </div>
+
+                <!-- Photo Presse 4 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 gallery-image shine-effect scroll-animate" onclick="openLightbox('presse-4.jpg')">
+                    <img src="presse-4.jpg" alt="Festival TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold">Festival 2024</p>
+                    </div>
+                </div>
+
+                <!-- Photo Presse 5 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 gallery-image shine-effect scroll-animate" onclick="openLightbox('presse-5.jpg')">
+                    <img src="presse-5.jpg" alt="TV locale TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold">TV Régionale</p>
+                    </div>
+                </div>
+
+                <!-- Photo Presse 6 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 gallery-image shine-effect scroll-animate" onclick="openLightbox('presse-6.jpg')">
+                    <img src="presse-6.jpg" alt="Presse nationale TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold">Article National</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION : PARTAGE ET AMITIÉS ========== -->
+    <section id="amities" class="py-20 bg-zinc-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">PARTAGE & AMITIÉS</h2>
+                <div class="w-24 h-1 bg-gold mx-auto"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Les coulisses, la complicité et les rencontres qui font l'âme du groupe.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Photo Amitiés 1 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-1.jpg')">
+                    <img src="amities-1.jpg" alt="Backstage TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">Backstage</p>
+                    </div>
+                </div>
+
+                <!-- Photo Amitiés 2 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-2.jpg')">
+                    <img src="amities-2.jpg" alt="Complicité groupe TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">Complicité du groupe</p>
+                    </div>
+                </div>
+
+                <!-- Photo Amitiés 3 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-3.jpg')">
+                    <img src="amities-3.jpg" alt="Rencontres TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">Rencontres</p>
+                    </div>
+                </div>
+
+                <!-- Photo Amitiés 4 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-4.jpg')">
+                    <img src="amities-4.jpg" alt="Moments amicaux TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">Moments de partage</p>
+                    </div>
+                </div>
+
+                <!-- Photo Amitiés 5 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-5.jpg')">
+                    <img src="amities-5.jpg" alt="Fans et groupe TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">Avec nos fans</p>
+                    </div>
+                </div>
+
+                <!-- Photo Amitiés 6 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-6.jpg')">
+                    <img src="amities-6.jpg" alt="Coulisses TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">En coulisses</p>
+                    </div>
+                </div>
+
+                <!-- Photo Amitiés 7 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-7.jpg')">
+                    <img src="amities-7.jpg" alt="Moments uniques TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">Moments uniques</p>
+                    </div>
+                </div>
+
+                <!-- Photo Amitiés 8 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-8.jpg')">
+                    <img src="amities-8.jpg" alt="Souvenirs TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="expand" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <p class="text-white font-bold text-sm">Souvenirs inoubliables</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section avec NETLIFY FORMS -->
+    <section id="contact" class="py-20 bg-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row scroll-animate">
+                <div class="md:w-5/12 bg-zinc-800 p-10 md:p-12 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute inset-0 z-0 opacity-20">
+                        <img src="about.webp" alt="bg" class="w-full h-full object-cover grayscale">
+                    </div>
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-display font-bold text-white mb-6">CONTACTEZ-NOUS</h2>
+                        <p class="text-gray-400 mb-8">Vous organisez un festival, une fête locale ou un événement privé ? Discutons de votre projet.</p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-gold/20 p-3 rounded-full text-gold">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold">Email</p>
+                                    <p class="text-gray-400">contact@tribute-vieilles-canailles.fr</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-gold/20 p-3 rounded-full text-gold">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold">Téléphone</p>
+                                    <p class="text-gray-400">06 00 00 00 00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-gold/20 p-3 rounded-full text-gold">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold">Zone</p>
+                                    <p class="text-gray-400">Toute la France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 mt-12 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:bg-gold hover:text-black transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:bg-gold hover:text-black transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:bg-gold hover:text-black transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:w-7/12 p-10 md:p-12">
+                    <!-- NETLIFY FORM -->
+                    <form name="contact" method="POST" netlify class="space-y-6">
+                        <input type="hidden" name="form-name" value="contact" />
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Nom *</label>
+                                <input type="text" name="nom" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Votre nom">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Structure *</label>
+                                <input type="text" name="structure" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Mairie, Asso, Festival...">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Email *</label>
+                            <input type="email" name="email" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="votre@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Téléphone</label>
+                            <input type="tel" name="telephone" class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="06 XX XX XX XX">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Message & Détails (Date, Lieu) *</label>
+                            <textarea rows="4" name="message" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Bonjour, je souhaite réserver le groupe pour..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gold text-black font-bold py-4 rounded-lg hover:bg-yellow-500 transition-all transform hover:scale-[1.02] shadow-lg btn-glow">
+                            ENVOYER LA DEMANDE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2025 Tribute Les Vieilles Canailles. Tous droits réservés. 
+                <br class="md:hidden">Conception moderne pour légende éternelle.
+            </p>
+        </div>
+    </footer>
+
+    <!-- BOUTON FACEBOOK FLOTTANT -->
+    <a href="https://www.facebook.com/Tributelesvieillescanailles/" target="_blank" rel="noopener noreferrer" class="floating-facebook">
+        <div class="icon-wrapper">
+            <i data-lucide="calendar-days" class="w-6 h-6"></i>
+        </div>
+        <div class="text-content">
+            <span class="text-main">📅 Agenda & Lives</span>
+            <span class="text-sub">Suivez nos concerts !</span>
+        </div>
+    </a>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // ========== 1. SCROLL ANIMATIONS ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec les classes scroll-animate
+        document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========== 2. PARTICULES DORÉES CANVAS ==========
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+        const numberOfParticles = 50;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) {
+                    this.speedX = -this.speedX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.speedY = -this.speedY;
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Glow effect
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                
+                // Lignes de connexion
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.1 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // Resize canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        // ========== LIGHTBOX FUNCTIONS ==========
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox when clicking outside
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
