@@ -281,7 +281,7 @@
             transform: translateX(0);
         }
 
-        /* 2. HOVER EFFECTS AMÉLIORÉS */
+        /* 2. HOVER EFFECTS AMÃ‰LIORÃ‰S */
         .btn-glow {
             position: relative;
             overflow: hidden;
@@ -371,7 +371,7 @@
             animation: logoEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        /* Effet glow doré */
+        /* Effet glow dorÃ© */
         .glow-gold {
             animation: glowPulse 3s ease-in-out infinite;
         }
@@ -443,12 +443,12 @@
                     <div class="ml-10 flex items-baseline space-x-6">
                         <a href="#accueil" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Accueil</a>
                         <a href="#le-groupe" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Le Groupe</a>
-                        <a href="#repertoire" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Répertoire</a>
-                        <a href="#videos" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Vidéos</a>
+                        <a href="#repertoire" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">RÃ©pertoire</a>
+                        <a href="#videos" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">VidÃ©os</a>
                         <a href="#galerie" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Galerie</a>
                         <a href="#presse" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Presse</a>
-                        <a href="#amities" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">Amitiés</a>
-                        <a href="#contact" class="bg-gold text-black hover:bg-yellow-500 px-4 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 btn-glow">Réserver</a>
+                        <a href="#amities" class="hover:text-gold px-3 py-2 rounded-md text-sm font-medium transition-colors">AmitiÃ©s</a>
+                        <a href="#contact" class="bg-gold text-black hover:bg-yellow-500 px-4 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 btn-glow">RÃ©server</a>
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
@@ -463,58 +463,55 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#accueil" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
                 <a href="#le-groupe" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Le Groupe</a>
-                <a href="#repertoire" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Répertoire</a>
-                <a href="#videos" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Vidéos</a>
+                <a href="#repertoire" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">RÃ©pertoire</a>
+                <a href="#videos" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">VidÃ©os</a>
                 <a href="#galerie" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Galerie</a>
                 <a href="#presse" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Presse</a>
-                <a href="#amities" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Amitiés</a>
-                <a href="#contact" class="text-gold font-bold block px-3 py-2 rounded-md text-base font-medium">Réserver</a>
+                <a href="#amities" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">AmitiÃ©s</a>
+                <a href="#contact" class="text-gold font-bold block px-3 py-2 rounded-md text-base font-medium">RÃ©server</a>
             </div>
         </div>
     </nav>
 
-<!-- Hero Section avec Particules -->
-<section id="accueil" class="relative min-h-screen pt-24 sm:pt-28 flex items-center justify-center overflow-hidden bg-black">
+    <!-- Hero Section avec Particules -->
+<section id="accueil" class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
         <img src="hero.webp" alt="Tribute Les Vieilles Canailles Concert Live" class="w-full h-full object-cover opacity-60">
         <div class="absolute inset-0 hero-gradient"></div>
     </div>
 
-    <!-- CANVAS PARTICULES DORÉES -->
+    <!-- CANVAS PARTICULES DORÃ‰ES -->
     <canvas id="particles-canvas"></canvas>
 
     <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto hero-content">
-        <!-- 1. LOGO TLVC CENTRÉ (LE PLUS HAUT) -->
-        <div class="inline-flex rounded-full bg-black/45 p-3 ring-1 ring-[#d4af37]/35 backdrop-blur-sm">
-            <img src="/logo-tlvc.jpg" alt="TLVC"
-                 class="mx-auto h-auto w-[68vw] max-w-[280px] min-w-[180px] drop-shadow-lg" />
-        </div>
-
+        <!-- 1. LOGO TLVC CENTRÃ‰ (LE PLUS HAUT) -->
+        <img src="/logo-tlvc.jpg" alt="TLVC"class="mx-auto h-auto w-[68vw] max-w-[280px] min-w-[180px] drop-shadow-lg" />
+        
         <!-- 2. BADGE TRIBUTE (JUSTE EN DESSOUS DU LOGO) -->
-        <div class="inline-block border border-gold text-gold px-4 py-1 rounded-full text-sm font-semibold tracking-widest mb-6 uppercase bg-black/40 backdrop-blur-sm scroll-animate mt-6">
+        <div class="inline-block border border-gold text-gold px-4 py-1 rounded-full text-sm font-semibold tracking-widest mb-6 uppercase bg-black/40 backdrop-blur-sm scroll-animate">
             TRIBUTE
         </div>
-
+        
         <!-- 3. TITRE PRINCIPAL -->
         <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight drop-shadow-2xl scroll-animate">
             L'ESPRIT DES <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">LÉGENDES</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">LÃ‰GENDES</span>
         </h1>
-
+        
         <!-- 4. SOUS-TITRE -->
         <p class="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-gray-300 font-light mb-10 scroll-animate">
-            Retrouvez la magie de <strong class="text-white">Johnny, Eddy et Jacques</strong>.
+            Retrouvez la magie de <strong class="text-white">Johnny, Eddy et Jacques</strong>. 
             <br>6 musiciens, 3 heures de live, 100% Rock'n'Roll.
         </p>
-
+        
         <!-- 5. BOUTONS D'ACTION -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center scroll-animate">
             <a href="#contact" class="bg-gold text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 transition-all transform hover:scale-105 shadow-lg shadow-yellow-900/20 flex items-center justify-center gap-2 btn-glow">
                 <i data-lucide="calendar-check"></i> Demander un devis
             </a>
             <a href="#le-groupe" class="border border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 backdrop-blur-sm bg-white/5 btn-glow">
-                <i data-lucide="music"></i> Découvrir le groupe
+                <i data-lucide="music"></i> DÃ©couvrir le groupe
             </a>
         </div>
     </div>
@@ -537,7 +534,7 @@
                     <span class="text-sm md:text-base text-gray-400 uppercase tracking-widest">Musiciens Pro</span>
                 </div>
                 <div class="p-4">
-                    <span class="block text-4xl md:text-5xl font-display font-bold text-gold mb-2">∞</span>
+                    <span class="block text-4xl md:text-5xl font-display font-bold text-gold mb-2">âˆž</span>
                     <span class="text-sm md:text-base text-gray-400 uppercase tracking-widest">Souvenirs</span>
                 </div>
             </div>
@@ -554,22 +551,22 @@
                     <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-gold"></div>
                 </div>
                 <div class="scroll-animate-right">
-                    <h2 class="text-gold font-display text-lg tracking-widest uppercase mb-2">L'Expérience</h2>
-                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Plus qu'un concert, une célébration.</h3>
+                    <h2 class="text-gold font-display text-lg tracking-widest uppercase mb-2">L'ExpÃ©rience</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Plus qu'un concert, une cÃ©lÃ©bration.</h3>
                     <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        Revivez sur scène l'esprit rock des <strong>Vieilles Canailles</strong>. Notre tribute band réunit six musiciens passionnés pour rendre hommage au trio mythique de la chanson française : Hallyday, Mitchell, Dutronc.
+                        Revivez sur scÃ¨ne l'esprit rock des <strong>Vieilles Canailles</strong>. Notre tribute band rÃ©unit six musiciens passionnÃ©s pour rendre hommage au trio mythique de la chanson franÃ§aise : Hallyday, Mitchell, Dutronc.
                     </p>
                     <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        La formule parfaite pour une soirée dansante, festive et nostalgique. Des standards des années 60 à aujourd'hui, nous vous proposons une immersion totale, sans imitation caricaturale, mais avec une fidélité musicale absolue et une énergie communicative.
+                        La formule parfaite pour une soirÃ©e dansante, festive et nostalgique. Des standards des annÃ©es 60 Ã  aujourd'hui, nous vous proposons une immersion totale, sans imitation caricaturale, mais avec une fidÃ©litÃ© musicale absolue et une Ã©nergie communicative.
                     </p>
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-center text-gray-300">
                             <i data-lucide="check-circle" class="text-gold w-6 h-6 mr-3"></i>
-                            Adapté aux festivals, mairies et soirées privées
+                            AdaptÃ© aux festivals, mairies et soirÃ©es privÃ©es
                         </li>
                         <li class="flex items-center text-gray-300">
                             <i data-lucide="check-circle" class="text-gold w-6 h-6 mr-3"></i>
-                            Sonorisation et lumières professionnelles
+                            Sonorisation et lumiÃ¨res professionnelles
                         </li>
                         <li class="flex items-center text-gray-300">
                             <i data-lucide="check-circle" class="text-gold w-6 h-6 mr-3"></i>
@@ -587,7 +584,7 @@
             <div class="text-center mb-16 scroll-animate">
                 <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">LES MUSICIENS</h2>
                 <div class="w-24 h-1 bg-gold mx-auto"></div>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Une équipe soudée de professionnels au service du Rock'n'Roll.</p>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Une Ã©quipe soudÃ©e de professionnels au service du Rock'n'Roll.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -634,7 +631,7 @@
                         <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent h-24"></div>
                     </div>
                     <div class="p-6 relative">
-                        <h3 class="text-2xl font-display font-bold text-white mb-1">HERVÉ</h3>
+                        <h3 class="text-2xl font-display font-bold text-white mb-1">HERVÃ‰</h3>
                         <p class="text-gold font-medium uppercase text-sm tracking-wider">Batterie & Chant</p>
                     </div>
                 </div>
@@ -666,16 +663,16 @@
         </div>
     </section>
 
-    <!-- SECTION VIDÉOS YouTube -->
+    <!-- SECTION VIDÃ‰OS YouTube -->
     <section id="videos" class="py-20 bg-black relative overflow-hidden">
         <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 scroll-animate">
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">VIDÉOS</h2>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">VIDÃ‰OS</h2>
                 <div class="w-24 h-1 bg-gold mx-auto"></div>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Revivez nos meilleurs moments sur scène. 100% Live Rock'n'Roll !</p>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Revivez nos meilleurs moments sur scÃ¨ne. 100% Live Rock'n'Roll !</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -687,7 +684,7 @@
                         </div>
                     </div>
                     <h3 class="text-2xl font-display font-bold text-white mb-2">Concert Live - Moment 1</h3>
-                    <p class="text-gray-400">Une performance énergique du groupe. L'énergie rock à son paroxysme !</p>
+                    <p class="text-gray-400">Une performance Ã©nergique du groupe. L'Ã©nergie rock Ã  son paroxysme !</p>
                 </div>
 
                 <!-- Video 2 -->
@@ -698,7 +695,7 @@
                         </div>
                     </div>
                     <h3 class="text-2xl font-display font-bold text-white mb-2">Concert Live - Moment 2</h3>
-                    <p class="text-gray-400">L'interaction avec le public, la passion, la musique qui embrase la scène !</p>
+                    <p class="text-gray-400">L'interaction avec le public, la passion, la musique qui embrase la scÃ¨ne !</p>
                 </div>
             </div>
         </div>
@@ -743,7 +740,7 @@
 
                 <!-- Photo 4 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('Herve.jpg')">
-                    <img src="Herve.jpg" alt="Hervé - TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <img src="Herve.jpg" alt="HervÃ© - TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
@@ -762,29 +759,29 @@
                 <div class="lg:w-1/3 mb-12 lg:mb-0 scroll-animate-left">
                     <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">LA SETLIST <br><span class="text-gold">MYTHIQUE</span></h2>
                     <p class="text-gray-400 text-lg mb-8">
-                        Nous traversons les époques avec les plus grands standards. Une setlist énergique qui fait chanter et danser toutes les générations.
+                        Nous traversons les Ã©poques avec les plus grands standards. Une setlist Ã©nergique qui fait chanter et danser toutes les gÃ©nÃ©rations.
                     </p>
                     <a href="#contact" class="inline-flex items-center text-white border-b border-gold pb-1 hover:text-gold transition-colors">
-                        Télécharger le dossier de presse <i data-lucide="download" class="ml-2 w-4 h-4"></i>
+                        TÃ©lÃ©charger le dossier de presse <i data-lucide="download" class="ml-2 w-4 h-4"></i>
                     </a>
                 </div>
 
                 <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-animate-right">
                     <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
                         <h4 class="text-xl font-bold text-white mb-2">Les Incontournables</h4>
-                        <p class="text-gray-400 italic">"Noir c'est noir", "Pas de boogie woogie", "Et moi, et moi, et moi", "Lèche-bottes blues"...</p>
+                        <p class="text-gray-400 italic">"Noir c'est noir", "Pas de boogie woogie", "Et moi, et moi, et moi", "LÃ¨che-bottes blues"...</p>
                     </div>
                     <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
-                        <h4 class="text-xl font-bold text-white mb-2">L'Énergie Rock</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">L'Ã‰nergie Rock</h4>
                         <p class="text-gray-400 italic">"Gabrielle", "Les Cactus", "La musique que j'aime", "Allumer le feu"...</p>
                     </div>
                     <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
                         <h4 class="text-xl font-bold text-white mb-2">Les Ballades</h4>
-                        <p class="text-gray-400 italic">"Quelque chose de Tennessee", "Sur la route de Memphis", "Le cimetière des éléphants"...</p>
+                        <p class="text-gray-400 italic">"Quelque chose de Tennessee", "Sur la route de Memphis", "Le cimetiÃ¨re des Ã©lÃ©phants"...</p>
                     </div>
                     <div class="bg-black p-6 rounded-lg border-l-4 border-gold hover:transform hover:scale-105 transition-all">
                         <h4 class="text-xl font-bold text-white mb-2">Et bien plus...</h4>
-                        <p class="text-gray-400 italic">Plus de 3h de répertoire modulable selon votre événement.</p>
+                        <p class="text-gray-400 italic">Plus de 3h de rÃ©pertoire modulable selon votre Ã©vÃ©nement.</p>
                     </div>
                 </div>
             </div>
@@ -807,7 +804,7 @@
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
-                    <p class="text-gray-300 mb-6 italic">"Comme je dis très souvent... ça donne la chair de poule tellement c'est beau, tellement c'est bien. Grand merci aux Vieilles Canailles !!!"</p>
+                    <p class="text-gray-300 mb-6 italic">"Comme je dis trÃ¨s souvent... Ã§a donne la chair de poule tellement c'est beau, tellement c'est bien. Grand merci aux Vieilles Canailles !!!"</p>
                     <p class="text-white font-bold text-sm">- Fan, Juillet 2024</p>
                 </div>
 
@@ -820,7 +817,7 @@
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
-                    <p class="text-gray-300 mb-6 italic">"Un concert de oufffff, un groupe qui joue à la perfection avec ses tripes ! Bravo !"</p>
+                    <p class="text-gray-300 mb-6 italic">"Un concert de oufffff, un groupe qui joue Ã  la perfection avec ses tripes ! Bravo !"</p>
                     <p class="text-white font-bold text-sm">- Organisateur, Mai 2023</p>
                 </div>
 
@@ -833,23 +830,23 @@
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
-                    <p class="text-gray-300 mb-6 italic">"Ils ont mis le feu ! Merci pour cette magnifique fête de la musique qui fut encore une fois une très belle réussite."</p>
+                    <p class="text-gray-300 mb-6 italic">"Ils ont mis le feu ! Merci pour cette magnifique fÃªte de la musique qui fut encore une fois une trÃ¨s belle rÃ©ussite."</p>
                     <p class="text-white font-bold text-sm">- Mairie, Juin 2023</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== SECTION : PRESSE ET MÉDIAS ========== -->
+    <!-- ========== SECTION : PRESSE ET MÃ‰DIAS ========== -->
     <section id="presse" class="py-20 bg-black relative overflow-hidden">
         <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 scroll-animate">
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">PRESSE & MÉDIAS</h2>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">PRESSE & MÃ‰DIAS</h2>
                 <div class="w-24 h-1 bg-gold mx-auto"></div>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Ils parlent de nous ! Articles de presse, interviews et couverture médiatique.</p>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Ils parlent de nous ! Articles de presse, interviews et couverture mÃ©diatique.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -877,7 +874,7 @@
 
                 <!-- Photo Presse 3 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 gallery-image shine-effect scroll-animate" onclick="openLightbox('presse-3.jpg')">
-                    <img src="presse-3.jpg" alt="Couverture médiatique TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <img src="presse-3.jpg" alt="Couverture mÃ©diatique TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
@@ -904,7 +901,7 @@
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                        <p class="text-white font-bold">TV Régionale</p>
+                        <p class="text-white font-bold">TV RÃ©gionale</p>
                     </div>
                 </div>
 
@@ -922,20 +919,20 @@
         </div>
     </section>
 
-    <!-- ========== SECTION : PARTAGE ET AMITIÉS ========== -->
+    <!-- ========== SECTION : PARTAGE ET AMITIÃ‰S ========== -->
     <section id="amities" class="py-20 bg-zinc-900 relative overflow-hidden">
         <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-900 opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 scroll-animate">
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">PARTAGE & AMITIÉS</h2>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">PARTAGE & AMITIÃ‰S</h2>
                 <div class="w-24 h-1 bg-gold mx-auto"></div>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Les coulisses, la complicité et les rencontres qui font l'âme du groupe.</p>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Les coulisses, la complicitÃ© et les rencontres qui font l'Ã¢me du groupe.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Photo Amitiés 1 -->
+                <!-- Photo AmitiÃ©s 1 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-1.jpg')">
                     <img src="amities-1.jpg" alt="Backstage TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -946,9 +943,9 @@
                     </div>
                 </div>
 
-                <!-- Photo Amitiés 2 -->
+                <!-- Photo AmitiÃ©s 2 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-2.jpg')">
-                    <img src="amities-2.jpg" alt="Complicité groupe TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    <img src="amities-2.jpg" alt="ComplicitÃ© groupe TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
@@ -957,7 +954,7 @@
                     </div>
                 </div>
 
-                <!-- Photo Amitiés 3 -->
+                <!-- Photo AmitiÃ©s 3 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-3.jpg')">
                     <img src="amities-3.jpg" alt="Rencontres TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -968,7 +965,7 @@
                     </div>
                 </div>
 
-                <!-- Photo Amitiés 4 -->
+                <!-- Photo AmitiÃ©s 4 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-4.jpg')">
                     <img src="amities-4.jpg" alt="Moments amicaux TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -979,18 +976,18 @@
                     </div>
                 </div>
 
-                <!-- Photo Amitiés 5 -->
+                <!-- Photo AmitiÃ©s 5 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-5.jpg')">
                     <img src="amities-5.jpg" alt="Fans et groupe TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                        <p class="text-white font-bold text-sm">Prêt!</p>
+                        <p class="text-white font-bold text-sm">PrÃªt!</p>
                     </div>
                 </div>
 
-                <!-- Photo Amitiés 6 -->
+                <!-- Photo AmitiÃ©s 6 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-6.jpg')">
                     <img src="amities-6.jpg" alt="Coulisses TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1001,7 +998,7 @@
                     </div>
                 </div>
 
-                <!-- Photo Amitiés 7 -->
+                <!-- Photo AmitiÃ©s 7 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-7.jpg')">
                     <img src="amities-7.jpg" alt="Moments uniques TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1012,7 +1009,7 @@
                     </div>
                 </div>
 
-                <!-- Photo Amitiés 8 -->
+                <!-- Photo AmitiÃ©s 8 -->
                 <div class="group relative overflow-hidden rounded-lg shadow-lg h-64 md:h-72 gallery-image shine-effect scroll-animate" onclick="openLightbox('amities-8.jpg')">
                     <img src="amities-8.jpg" alt="Souvenirs TLVC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1035,7 +1032,7 @@
                 </div>
                 <div class="relative z-10">
                     <h2 class="text-3xl font-display font-bold text-white mb-6">CONTACTEZ-NOUS</h2>
-                    <p class="text-gray-400 mb-8">Vous organisez un festival, une fête locale ou un événement privé ? Discutons de votre projet.</p>
+                    <p class="text-gray-400 mb-8">Vous organisez un festival, une fÃªte locale ou un Ã©vÃ©nement privÃ© ? Discutons de votre projet.</p>
 
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
@@ -1052,7 +1049,7 @@
                                 <i data-lucide="phone" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <p class="text-white font-semibold">Téléphone</p>
+                                <p class="text-white font-semibold">TÃ©lÃ©phone</p>
                                 <p class="text-gray-400">06 00 00 00 00</p>
                             </div>
                         </div>
@@ -1099,16 +1096,16 @@
                         <input type="email" name="email" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="votre@email.com">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Téléphone</label>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">TÃ©lÃ©phone</label>
                         <input type="tel" name="telephone" class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="06 XX XX XX XX">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Message & Détails (Date, Lieu) *</label>
-                        <textarea rows="4" name="message" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Bonjour, je souhaite réserver le groupe pour..."></textarea>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Message & DÃ©tails (Date, Lieu) *</label>
+                        <textarea rows="4" name="message" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Bonjour, je souhaite rÃ©server le groupe pour..."></textarea>
                     </div>
                     
                     <!-- Message de confirmation (optionnel) -->
-                    <input type="hidden" name="_subject" value="Nouvelle demande de réservation TLVC">
+                    <input type="hidden" name="_subject" value="Nouvelle demande de rÃ©servation TLVC">
                     <input type="hidden" name="_next" value="https://tlvc-site.vercel.app/#contact">
                     
                     <button type="submit" class="w-full bg-gold text-black font-bold py-4 rounded-lg hover:bg-yellow-500 transition-all transform hover:scale-[1.02] shadow-lg btn-glow">
@@ -1124,8 +1121,8 @@
     <footer class="bg-black py-8 border-t border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-gray-500 text-sm">
-                &copy; 2025 Tribute Les Vieilles Canailles. Tous droits réservés. 
-                <br class="md:hidden">Conception moderne pour légende éternelle.
+                &copy; 2025 Tribute Les Vieilles Canailles. Tous droits rÃ©servÃ©s. 
+                <br class="md:hidden">Conception moderne pour lÃ©gende Ã©ternelle.
             </p>
         </div>
     </footer>
@@ -1136,7 +1133,7 @@
             <i data-lucide="calendar-days" class="w-6 h-6"></i>
         </div>
         <div class="text-content">
-            <span class="text-main">📅 Agenda & Lives</span>
+            <span class="text-main">ðŸ“… Agenda & Lives</span>
             <span class="text-sub">Suivez nos concerts !</span>
         </div>
     </a>
@@ -1159,12 +1156,12 @@
             });
         }, observerOptions);
 
-        // Observer tous les éléments avec les classes scroll-animate
+        // Observer tous les Ã©lÃ©ments avec les classes scroll-animate
         document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
             observer.observe(el);
         });
 
-        // ========== 2. PARTICULES DORÉES CANVAS ==========
+        // ========== 2. PARTICULES DORÃ‰ES CANVAS ==========
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
 
