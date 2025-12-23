@@ -1080,58 +1080,58 @@
             </div>
 
             <div class="md:w-7/12 p-10 md:p-12">
-                <!-- FORMSPREE FORM -->
-                <form action="https://formspree.io/f/mnneekez" method="POST" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Nom *</label>
-                            <input type="text" name="nom" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Votre nom">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Structure *</label>
-                            <input type="text" name="structure" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Mairie, Asso, Festival...">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Email *</label>
-                        <input type="email" name="email" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="votre@email.com">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Téléphone</label>
-                        <input type="tel" name="telephone" class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="06 XX XX XX XX">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Message & Détails (Date, Lieu) *</label>
-                        <textarea rows="4" name="message" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Bonjour, je souhaite réserver le groupe pour..."></textarea>
-                    </div>
-                    
-                    <!-- Message de confirmation (optionnel) -->
-                    <input type="hidden" name="_subject" value="Nouvelle demande de réservation TLVC">
-                    <input type="hidden" name="_next" value="https://tlvc-site.vercel.app/#contact">
-                    
-                    <button type="submit" class="w-full bg-gold text-black font-bold py-4 rounded-lg hover:bg-yellow-500 transition-all transform hover:scale-[1.02] shadow-lg btn-glow">
-                        ENVOYER LA DEMANDE
-                    </button>
-                </form>
+                          <!-- FORMSPREE FORM -->
+          <form action="https://formspree.io/f/mnneekez" method="POST" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Nom *</label>
+                <input type="text" name="nom" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Votre nom">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Structure *</label>
+                <input type="text" name="structure" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Mairie, Asso, Festival...">
+              </div>
             </div>
-        </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">Email *</label>
+              <input type="email" name="email" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="votre@email.com">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">Téléphone</label>
+              <input type="tel" name="telephone" class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="06 XX XX XX XX">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">Message & Détails (Date, Lieu) *</label>
+              <textarea rows="4" name="message" required class="w-full bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors" placeholder="Bonjour, je souhaite réserver le groupe pour..."></textarea>
+            </div>
+
+            <!-- Message de confirmation optionnel -->
+            <input type="hidden" name="_subject" value="Nouvelle demande de réservation TLVC">
+            <input type="hidden" name="_next" value="https://tlvc-site.vercel.app/#contact">
+
+            <button type="submit" class="w-full bg-gold text-black font-bold py-4 rounded-lg hover:bg-yellow-500 transition-all transform hover:scale-1.02 shadow-lg btn-glow">
+              ENVOYER LA DEMANDE
+            </button>
+
+            <!-- TEXTE RGPD INTÉGRÉ DANS LE FORM (élégant) -->
+            <div class="pt-4 border-t border-zinc-700/50 text-xs leading-relaxed text-gray-500">
+              <p>
+                Les informations recueillies via ce formulaire sont utilisées uniquement pour répondre à votre demande. 
+                Elles sont transmises via notre prestataire Formspree. 
+                Vous pouvez exercer vos droits (accès, rectification, suppression, opposition) en écrivant à 
+                <a href="mailto:groupetlvc@gmail.com" class="text-gray-400 underline hover:text-white">groupetlvc@gmail.com</a>. 
+                <a href="#confidentialite" class="text-gray-400 underline hover:text-white">En savoir plus</a>.
+              </p>
+            </div>
+          </form>
+
+        </div> <!-- fin colonne droite (form) -->
+      </div> <!-- fin card contact -->
     </div>
-</section>
-
-<!-- RGPD / Info sous formulaire (bien placé, harmonisé) -->
-<div class="mt-6 pt-4 border-t border-zinc-800 text-xs leading-relaxed text-gray-500">
-  <p>
-    Les informations recueillies via ce formulaire sont utilisées uniquement pour répondre à votre demande.
-    Elles sont transmises via notre prestataire Formspree.
-    Vous pouvez exercer vos droits (accès, rectification, suppression, opposition) en écrivant à
-    <a href="mailto:groupetlvc@gmail.com" class="underline hover:text-white">groupetlvc@gmail.com</a>.
-    <a href="#confidentialite" class="underline hover:text-white">En savoir plus</a>.
-  </p>
-</div>
-
-</div> <!-- fin colonne droite (form) -->
-</div> <!-- fin card contact -->
-</section>
+  </section>
 
 <!-- Bloc infos légales (accordion propre + largeur limitée) -->
 <section id="infos-legales" class="bg-black border-t border-zinc-800">
